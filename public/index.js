@@ -31,9 +31,14 @@ for (let i = 0; i < 10; ++i) {
 }
 
 const modelPredictedValues = model(xs).dataSync();
-// const specificPrediction = model(2.3).dataSync();
-const specificPrediction = model([2.3, 11, 100]).dataSync();
-console.log("prediction", specificPrediction);
+const singlePrediction = model(2.3).dataSync();
+const arrayPrediction = model([2.3, 11, 100]).dataSync();
+console.log(
+  "singleprediction",
+  singlePrediction,
+  "arraypredicton",
+  arrayPrediction
+);
 
 function setup() {
   createCanvas(300, 300);

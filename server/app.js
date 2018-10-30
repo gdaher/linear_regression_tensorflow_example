@@ -13,7 +13,7 @@ module.exports = app;
 //logger middleware
 app.use(morgan("dev"));
 
-// you'll of course want static middleware so your browser can request things like your 'bundle.js'
+//static middleware
 app.use(express.static(path.join(__dirname, "../public")));
 
 //body parsing middleware
@@ -26,14 +26,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-// Make sure this is right at the end of your server logic!
-// The only thing after this might be a piece of middleware to serve up 500 errors for server problems
-// (However, if you have middleware to serve up 404s, that go would before this as well)
-//what is this for???
-// app.get("*", function(req, res, next) {
-//   res.sendFile(path.join(__dirname, "../public/index.html"));
-// });
 
 //for 500 errors
 app.use(function(err, req, res, next) {
